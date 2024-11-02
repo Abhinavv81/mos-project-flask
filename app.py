@@ -2,8 +2,10 @@ from flask import Flask, render_template, request, redirect, url_for, send_file
 import numpy as np
 import matplotlib.pyplot as plt
 from io import BytesIO
+from flask_frozen import Freezer
 
 app = Flask(__name__)
+freezer = Freezer(app)
 
 
 @app.route("/")
@@ -132,4 +134,5 @@ def calculate():
 
 
 if __name__ == "__main__":
+    freezer.freeze()
     app.run(debug=True)
